@@ -19,6 +19,10 @@
 		canPlayType	  = function( file )
 		{
 			var audioElement = document.createElement( 'audio' );
+			var fileType = file.split('.').pop().toLowerCase();                      
+            		if (fileType === 'm4a') {                
+                		return !!audioElement.canPlayType('audio/mp4; codecs="mp4a.40.2"').replace(/no/, '');
+            		}
 			return !!( audioElement.canPlayType && audioElement.canPlayType( 'audio/' + file.split( '.' ).pop().toLowerCase() + ';' ).replace( /no/, '' ) );
 		};
 
